@@ -1,4 +1,4 @@
-function CookieStorage (maxage, path) {
+function CookieStorage(maxage, path) {
     var _keys = [];
 
     var _cookies = (function () {
@@ -35,7 +35,7 @@ function CookieStorage (maxage, path) {
 
     this.length = _keys.length;
 
-    this.key = function (n) {
+    this.key = function(n) {
         if (n < 0 || n >= _keys.length) {
             return null;
         } else {
@@ -43,11 +43,11 @@ function CookieStorage (maxage, path) {
         }
     };
 
-    this.getItem = function (name) {
+    this.getItem = function(name) {
         return _cookies[name] || null;
     };
 
-    this.setItem = function (key, value) {
+    this.setItem = function(key, value) {
         var cookie = null;
 
         if ( !(key in _cookies) ) {
@@ -68,4 +68,6 @@ function CookieStorage (maxage, path) {
 
         document.cookie = cookie;
     };
+
+    this.removeItem = function() {};
 }
