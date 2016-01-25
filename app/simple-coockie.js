@@ -86,4 +86,14 @@ function CookieStorage(maxage, path) {
         this.length--;
         document.cookie = key + "=; max-age=0";
     };
+
+    this.clear = function() {
+        for (var i = 0, keysLen = _keys.length; i < keysLen; i++) {
+            document.cookie = _keys[i] + "=; max-age=0";
+        }
+
+        _cookies = {};
+        _keys = [];
+        this.length = 0;
+    }
 }
