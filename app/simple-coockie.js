@@ -69,5 +69,21 @@ function CookieStorage(maxage, path) {
         document.cookie = cookie;
     };
 
-    this.removeItem = function() {};
+    this.removeItem = function(key) {
+        if ( !(key in _cookies) ) {
+            return undefined;
+        }
+
+        delete _cookies[key];
+
+        for (var i = 0, keysLen = _keys.length; i < keysLen; i++) {
+            if (_keys[i] === key) {
+                _keys.splice(i, 1);
+                break;
+            }
+        }
+
+        this.length--;
+        document.cookie = key + "=; max-age=0";
+    };
 }
